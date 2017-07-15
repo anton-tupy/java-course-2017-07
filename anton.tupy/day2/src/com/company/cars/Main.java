@@ -1,4 +1,4 @@
-package com.company;
+package com.company.cars;
 
 public class Main {
 
@@ -8,6 +8,7 @@ public class Main {
 
         Vehicle vehicle = new Car();
         vehicle.move();
+
         vehicle = new Ship();
         vehicle.move();
 
@@ -15,6 +16,8 @@ public class Main {
         movable.move();
 
         car.moveTwice();
+
+        car.moveTriple();
 
     }
 }
