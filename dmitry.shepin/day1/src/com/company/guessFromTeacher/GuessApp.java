@@ -1,4 +1,4 @@
-package com.company.guess;
+package com.company.guessFromTeacher;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
  */
 public class GuessApp {
     public static void main(String[] args) throws IOException {
-        GuessGame game = new GuessGame(8, 100);
+        GuessGame game = new GuessGame(7, 100);
 
         InputStreamReader reader = new InputStreamReader(System.in);
         BufferedReader bufferedReader = new BufferedReader(reader);
@@ -17,6 +17,7 @@ public class GuessApp {
         while(true) {
             System.out.println("Введите число:");
             String line = bufferedReader.readLine();
+
             if (line == null) {
                 break;
             }

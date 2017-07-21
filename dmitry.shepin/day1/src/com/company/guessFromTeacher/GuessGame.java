@@ -1,10 +1,8 @@
-package com.company.guess;
+package com.company.guessFromTeacher;
 
 import java.util.Random;
 
-/**
- * Created by IT-Academy on 15.07.2017.
- */
+
 public class GuessGame {
 
     private final int maxTries;
