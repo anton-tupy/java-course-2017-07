@@ -17,7 +17,7 @@ public class CalculatorContext
         stack.push(value);
     }
 
-    public void pop()
+    public float pop()
     {
         stack.pop();
     }
@@ -35,6 +35,11 @@ public class CalculatorContext
     public float getValue(String name)
     {
         return values.get(name);
+    }
+
+    public boolean isValue(String name)
+    {
+        return values.get(name) != null;
     }
 
 }
