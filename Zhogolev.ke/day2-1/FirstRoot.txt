@@ -1,0 +1,41 @@
+Define a 1
+define b 1
+define c -6
+push 2
+push b
+*
+push 0# i tak tozhe mogu
+push b
+-
+push b
+push b
+*
+push -4
+push c
+push a
+*
+*
++
+sqrt
++
+/
+print
+push 2
+push b
+*
+push 0# i tak tozhe mogu
+push b
+-
+push b
+push b
+*
+push -4
+push c
+push a
+*
+*
++
+sqrt
+-
+/
+print
