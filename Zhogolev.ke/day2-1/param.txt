@@ -1,0 +1,4 @@
+DEFIne b 4
+push b
+sqrt
+print
