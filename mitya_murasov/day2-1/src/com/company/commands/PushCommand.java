@@ -19,7 +19,15 @@ public class PushCommand implements Command
             throw new RuntimeException("PushCommand: no arguments");
         }
         String arg = arguments.get(0);
-        float value = Float.parseFloat(arg);
+        float value ;
+        if (context.isValue(arg))
+        {
+            value = context.getValue(arg);
+        }
+        else
+        {
+            value = Float.parseFloat(arg);
+        }
 
 
         context.push(value);
