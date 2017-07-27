@@ -34,7 +34,7 @@ public class GuessMyVersion {
 
         // Число попыток
         int j;
-        int maxNumberOfAttempts = 5;
+        int maxNumberOfAttempts = 8;
         for (j = 0; j < maxNumberOfAttempts; j++) {
 
             System.out.println("Введите число:");

@@ -1,2 +1,3 @@
-PUSH 616
-PRINT
+push 129
+log
+print
