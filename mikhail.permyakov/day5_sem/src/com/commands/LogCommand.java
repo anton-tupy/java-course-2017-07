@@ -15,9 +15,8 @@ public class LogCommand implements Command {
 
     @Override
     public void execute(List<String> arguments) {
-        float value1 = context.pop();
-       // float value2 = context.pop();
-        float result = (float) Math.log(value1);
+        float value = context.pop();
+        float result = (float)Math.log(value);
         context.push(result);
     }
 }
