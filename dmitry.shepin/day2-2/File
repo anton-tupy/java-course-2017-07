@@ -1,0 +1,8 @@
+define a 2
+push a
+log
+print
+exp
+print
+exp
+print
