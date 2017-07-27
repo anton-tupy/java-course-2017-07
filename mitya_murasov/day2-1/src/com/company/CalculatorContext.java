@@ -19,7 +19,7 @@ public class CalculatorContext
 
     public float pop()
     {
-        stack.pop();
+        return stack.pop();
     }
 
     public float peek()
