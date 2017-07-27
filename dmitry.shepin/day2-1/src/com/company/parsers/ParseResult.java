@@ -1,15 +1,15 @@
-package com.company;
+package com.company.parsers;
 
 import java.util.List;
 
 public class ParseResult {
+    private String commandName;
+    private List<String> arguments;
+
     public ParseResult(String commandName, List<String> arguments) {
         this.commandName = commandName;
         this.arguments = arguments;
     }
-
-    private String commandName;
-    private List<String> arguments;
 
     public String getCommandName() {
         return commandName;

@@ -1,4 +1,4 @@
-package com.company;
+package com.company.parsers;
 
 import java.util.ArrayList;
 
@@ -19,6 +19,7 @@ public class LineParser {
             return null;
         }
         String commandName = items[0];
+
         ArrayList<String> arguments = new ArrayList<>();
         for (int i = 1; i < items.length; i++) {
             arguments.add(items[i]);
