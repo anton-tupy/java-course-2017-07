@@ -1,3 +1,5 @@
+package com;
+
 import java.io.*;
 
 /**
@@ -7,9 +9,10 @@ public class Calculator {
 
     public void run(String path) {
         LineParser lineParser = new LineParser();
-        CommandFactory commandFactory = new CommandFactory();
-        BufferedReader reader = getBufferedReader(path);
         CalculatorContext calculatorContext = new CalculatorContext();
+        ContextInjector contextInjector = new ContextInjector(calculatorContext);
+        CommandFactory commandFactory = new CommandFactory(contextInjector);
+        BufferedReader reader = getBufferedReader(path);
         String line;
         while(true) {
             try {
@@ -25,14 +28,12 @@ public class Calculator {
                 continue;
             }
             Command command = commandFactory.createCommand(parseResult.getCommandName());
-            command.execute(parseResult.getArguments(), calculatorContext);
+            command.execute(parseResult.getArguments());
         }
     }
-
     private BufferedReader getBufferedReader(String path) {
         return new BufferedReader(getReader(path));
     }
-
     private Reader getReader(String path) {
         if (path == null) {
             return new InputStreamReader(System.in);
