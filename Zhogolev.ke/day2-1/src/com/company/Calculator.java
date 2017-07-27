@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.commands.ContextInjector;
+
 import java.io.*;
 
 /**
@@ -7,11 +9,13 @@ import java.io.*;
  */
 public class Calculator {
 
-    public void run(String path) {
+    public void run(String path) throws IOException {
         LineParser lineParser = new LineParser();
-        CommandFactory commandFactory = new CommandFactory();
-        BufferedReader reader = getBufferedReader(path);
         CalculatorContext calculatorContext = new CalculatorContext();
+        ContextInjector contextInjector = new ContextInjector(calculatorContext);
+        CommandFactory commandFactory = new CommandFactory(contextInjector);
+        BufferedReader reader = getBufferedReader(path);
+        //CalculatorContext calculatorContext = new CalculatorContext();
         String line;
         while(true) {
             try {
@@ -21,13 +25,15 @@ public class Calculator {
             }
             if (line == null) {
                 break;
+
             }
             ParseResult parseResult = lineParser.parse(line);
             if (parseResult == null) {
                 continue;
             }
-            Command command = commandFactory.createCommand(parseResult.getCommandName());
-            command.execute(parseResult.getArguments(), calculatorContext);
+            String StringParseResult1 = parseResult.getCommandName();
+            Command command = commandFactory.createCommand(StringParseResult1);
+            command.execute(parseResult.getArguments());
         }
     }
 

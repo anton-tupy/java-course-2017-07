@@ -1,7 +1,5 @@
 package com.company;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 import java.util.ArrayList;
 
 /**
@@ -13,12 +11,8 @@ public class LineParser {
         if (line == null || line.isEmpty()) {
             return null;
         }
-        String[] lineWithoutComments = line.split("#");
-        String[] items = new String[0];
 
-        if (lineWithoutComments.length!=0) {
-            items = lineWithoutComments[0].split(" ");
-        }
+        String[] items = line.split(" ");
         if (items.length == 0) {
             return null;
         }

@@ -6,19 +6,18 @@ import com.company.anotation.In;
 
 import java.util.List;
 
-import static java.lang.System.in;
-
 /**
- * Created by It-Academy-5 on 22.07.2017.
+ * Created by IT-Academy on 20.07.2017.
  */
-public class SqrtCommand implements Command {
+public class PopCommand implements Command {
     @In
     private CalculatorContext context;
-
     @Override
     public void execute(List<String> arguments) {
         float value = context.pop();
-        float result = (float)Math.sqrt(value);
-        context.push(result);
+        if (!arguments.isEmpty()) {
+            String name = arguments.get(0);
+            context.defineValue(name, value);
+        }
     }
 }
