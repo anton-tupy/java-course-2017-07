@@ -1,4 +1,4 @@
-package com.company.commands;
+package commands;
 
 import com.company.CalculatorContext;
 import com.company.Command;
