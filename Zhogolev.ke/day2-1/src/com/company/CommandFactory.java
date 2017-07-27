@@ -24,6 +24,8 @@ public class CommandFactory {
                 return new MultiplicationCommand();
             case "/":
                 return new DerCommand();
+            case "#":
+                return new CommentCommand();
             default:
                 throw new RuntimeException("Unexpected command: " + commandName);
         }
