@@ -14,15 +14,13 @@ public class PushCommand implements Command {
         if (arguments.isEmpty()) {
             throw new RuntimeException("PushCommand: No arguments");
         }
-
         String arg = arguments.get(0);
-
         float value;
-        if (context.isValue(arg)) {
-            value = context.getValue(arg);
-        }
-        else {
+        try {
             value = Float.parseFloat(arg);
+        }catch(Exception e)
+        {
+          value = context.getValue(arg);
         }
 
         context.push(value);

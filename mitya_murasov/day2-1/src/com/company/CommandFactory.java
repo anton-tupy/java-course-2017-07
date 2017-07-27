@@ -3,17 +3,18 @@ package com.company;
 import com.company.commands.*;
 
 /**
- * Created by IT-Academy on 20.07.2017.
+ * Created by mitro on 20.07.17.
  */
-public class CommandFactory {
-    public Command createCommand(String commandName) {
-        switch (commandName.toUpperCase()) {
+public class CommandFactory
+{
+    public Command createCommand(String commandName)
+    {
+        switch (commandName.toUpperCase())
+        {
             case "PUSH":
                 return new PushCommand();
             case "POP":
                 return new PopCommand();
-            case "DEFINE":
-                return new DefineCommand();
             case "PRINT":
                 return new PrintCommand();
             case "+":
@@ -22,14 +23,16 @@ public class CommandFactory {
             case "-":
             case "MINUS":
                 return new SubtractCommand();
-            case "/":
-            case "DIVISION":
-                return new DivideCommand();
             case "*":
-            case "MULTI":
+            case "MULTIPLY":
                 return new MultiplyCommand();
+            case "/":
+            case "DIVIDE"
+                return new DivideCommand();
             case "SQRT":
                 return new SqrtCommand();
+            case "DEFINE":
+                return new DefineCommand();
             default:
                 throw new RuntimeException("Unexpected command: " + commandName);
         }

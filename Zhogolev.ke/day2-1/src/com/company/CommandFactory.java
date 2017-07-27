@@ -10,26 +10,20 @@ public class CommandFactory {
         switch (commandName.toUpperCase()) {
             case "PUSH":
                 return new PushCommand();
-            case "POP":
-                return new PopCommand();
-            case "DEFINE":
-                return new DefineCommand();
             case "PRINT":
                 return new PrintCommand();
-            case "+":
-            case "PLUS":
-                return new AddCommand();
-            case "-":
-            case "MINUS":
-                return new SubtractCommand();
-            case "/":
-            case "DIVISION":
-                return new DivideCommand();
-            case "*":
-            case "MULTI":
-                return new MultiplyCommand();
+            case "DEFINE":
+                return  new DefineCommand();
             case "SQRT":
                 return new SqrtCommand();
+            case "+":
+                return new AddCommand();
+            case "-":
+                return new SumCommand();
+            case "*":
+                return new MultiplicationCommand();
+            case "/":
+                return new DerCommand();
             default:
                 throw new RuntimeException("Unexpected command: " + commandName);
         }
