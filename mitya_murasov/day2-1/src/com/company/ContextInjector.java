@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.annotations.In;
+import com.company.annotations.InType;
 
 import java.lang.reflect.Field;
 
@@ -10,10 +11,12 @@ import java.lang.reflect.Field;
 public class ContextInjector
 {
     private CalculatorContext context;
+    private CalculatorStack stack;
 
-    public ContextInjector(CalculatorContext context)
+    public ContextInjector(CalculatorContext context, CalculatorStack stack)
     {
         this.context = context;
+        this.stack = stack;
     }
 
     public void injector(Object obj)
@@ -28,10 +31,20 @@ public class ContextInjector
             {
                 continue;
             }
+            InType type = inAnnotation.type();
             field.setAccessible(true);
             try
             {
-                field.set(obj, context);
+                switch (type)
+                {
+                    case CONTEXT:
+                        field.set(obj,context);
+                        break;
+                    case STACK:
+                        field.set(obj,stack);
+                        break;
+                }
+                //field.set(obj, context);
             }
             catch (IllegalAccessException e)
             {
