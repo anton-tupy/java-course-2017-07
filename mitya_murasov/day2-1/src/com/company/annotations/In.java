@@ -14,5 +14,5 @@ import java.lang.annotation.Target;
 
 public @interface In
 {
-
+    InType type();
 }

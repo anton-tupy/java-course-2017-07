@@ -2,8 +2,10 @@ package com.commands;
 
 
 import com.CalculatorContext;
+import com.CalculatorStack;
 import com.Command;
 import com.annotations.In;
+import com.annotations.InType;
 
 import java.util.List;
 
@@ -11,7 +13,10 @@ import java.util.List;
  * Created by IT-Academy on 20.07.2017.
  */
 public class PushCommand implements Command {
-    @In
+    @In (type = InType.STACK)
+    private CalculatorStack stack;
+
+    @In (type = InType.CONTEXT)
     private CalculatorContext context;
 
     @Override
@@ -30,6 +35,6 @@ public class PushCommand implements Command {
             value = Float.parseFloat(arg);
         }
 
-        context.push(value);
+        stack.push(value);
     }
 }
