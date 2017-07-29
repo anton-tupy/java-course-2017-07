@@ -13,7 +13,7 @@ public class Calculator {
         CalculatorStack calculatorStack = new CalculatorStack();
         ContextInjector contextInjector = new ContextInjector(calculatorContext, calculatorStack);
         CommandFactory commandFactory = new CommandFactory(contextInjector);
-        BufferedReader reader = getBufferedReader(path);
+        try (BufferedReader reader = getBufferedReader(path)){
         String line;
         while(true) {
             try {
@@ -30,6 +30,9 @@ public class Calculator {
             }
             Command command = commandFactory.createCommand(parseResult.getCommandName());
             command.execute(parseResult.getArguments());
+        }
+        }catch (IOException e){
+            throw new RuntimeException();
         }
     }
     private BufferedReader getBufferedReader(String path) {
