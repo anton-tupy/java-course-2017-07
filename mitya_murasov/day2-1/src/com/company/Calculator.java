@@ -12,7 +12,8 @@ public class Calculator
     {
         LineParser lineParser = new LineParser();
         CalculatorContext calculatorContext = new CalculatorContext();
-        ContextInjector contextInjector = new ContextInjector(calculatorContext);
+        CalculatorStack calculatorStack = new CalculatorStack();
+        ContextInjector contextInjector = new ContextInjector(calculatorContext,calculatorStack);
         CommandFactory commandFactory = new CommandFactory(contextInjector);
         BufferedReader reader = getBufferedReader(path);
 
