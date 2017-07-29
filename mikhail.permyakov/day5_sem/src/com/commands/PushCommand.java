@@ -1,7 +1,11 @@
-package commands;
+package com.commands;
 
-import com.company.CalculatorContext;
-import com.company.Command;
+
+import com.CalculatorContext;
+import com.CalculatorStack;
+import com.Command;
+import com.annotations.In;
+import com.annotations.InType;
 
 import java.util.List;
 
@@ -9,8 +13,14 @@ import java.util.List;
  * Created by IT-Academy on 20.07.2017.
  */
 public class PushCommand implements Command {
+    @In (type = InType.STACK)
+    private CalculatorStack stack;
+
+    @In (type = InType.CONTEXT)
+    private CalculatorContext context;
+
     @Override
-    public void execute(List<String> arguments, CalculatorContext context) {
+    public void execute(List<String> arguments) {
         if (arguments.isEmpty()) {
             throw new RuntimeException("PushCommand: No arguments");
         }
@@ -25,6 +35,6 @@ public class PushCommand implements Command {
             value = Float.parseFloat(arg);
         }
 
-        context.push(value);
+        stack.push(value);
     }
 }
