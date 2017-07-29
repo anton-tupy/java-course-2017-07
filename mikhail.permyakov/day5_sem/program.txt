@@ -1,0 +1,45 @@
+define a 2
+define b 8
+define c 6
+push b
+push b
+multi
+push 4
+push a
+push c
+multi
+multi
+minus
+sqrt
+push b
+minus
+push a
+push 2
+multi
+division
+
+push b
+push b
+multi
+push 4
+push a
+push c
+multi
+multi
+minus
+sqrt
+push -1
+multi
+push b
+push -1
+multi
+plus
+push a
+push 2
+multi
+division
+
+print
+pop
+print
+
