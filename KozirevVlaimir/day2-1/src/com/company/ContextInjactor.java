@@ -1,14 +1,17 @@
 package com.company;
 
 import com.company.anations.In;
+import com.company.anations.InType;
 
 import java.lang.reflect.Field;
 
 public class ContextInjactor {
     private CalculatorContext context;
+    private CalculatorStack stack;
 
-    public ContextInjactor(CalculatorContext context){
+    public ContextInjactor(CalculatorContext context,CalculatorStack stack){
         this.context = context;
+        this.stack = stack;
     }
 
     public void inject(Object obj){
@@ -19,9 +22,17 @@ public class ContextInjactor {
             if (inAnntation == null){
                 continue;
             }
+            InType type = inAnntation.type();
             field.setAccessible(true);
             try {
-                field.set(obj,context);
+                switch (type){
+                    case CONTEXT:
+                        field.set(obj,context);
+                        break;
+                    case STACK:
+                        field.set(obj,stack);
+                        break;
+                }
             } catch (IllegalAccessException e) {
                 throw  new RuntimeException(e);
             }

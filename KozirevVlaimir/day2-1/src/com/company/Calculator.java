@@ -8,7 +8,8 @@ public class Calculator {
     public void run(String path){
         LineParse lineParse = new LineParse();
         CalculatorContext calculatorContext = new CalculatorContext();
-        ContextInjactor contextInjactor = new ContextInjactor(calculatorContext);
+        CalculatorStack calculatorStack = new CalculatorStack();
+        ContextInjactor contextInjactor = new ContextInjactor(calculatorContext,calculatorStack);
         CommandFactory commandFactory = new CommandFactory(contextInjactor);
         BufferedReader reader = getBuff(path);
         String line;
