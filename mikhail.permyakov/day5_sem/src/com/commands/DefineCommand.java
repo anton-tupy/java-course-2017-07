@@ -2,8 +2,10 @@ package com.commands;
 
 
 import com.CalculatorContext;
+import com.CalculatorStack;
 import com.Command;
 import com.annotations.In;
+import com.annotations.InType;
 
 import java.util.List;
 
@@ -11,7 +13,7 @@ import java.util.List;
  * Created by It-Academy-5 on 22.07.2017.
  */
 public class DefineCommand implements Command {
-    @In
+    @In (type = InType.CONTEXT)
     private CalculatorContext context;
 
     @Override
