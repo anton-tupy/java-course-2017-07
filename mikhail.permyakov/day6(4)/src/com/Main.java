@@ -9,10 +9,10 @@ public class Main {
         String outputPath = args[1];
 
         WordCounter wordCounter = new WordCounter();
-        WordCounterResult count = wordCounter.count(inputPath);
+        WordCounterResult wordCounterResult = wordCounter.count(inputPath);
 
         WordStatisticsCalculator wordStatisticsCalculator = new WordStatisticsCalculator();
-        List<WordStatisticsRecord> statistics = wordStatisticsCalculator.calculate(count);
+        List<WordStatisticsRecord> statistics = wordStatisticsCalculator.calculate(wordCounterResult);
 
         WordStatisticsWriter statisticsWriter = new WordStatisticsWriter();
         statisticsWriter.write(outputPath, statistics);
