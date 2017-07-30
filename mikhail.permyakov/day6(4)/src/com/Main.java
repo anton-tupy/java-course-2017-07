@@ -14,7 +14,7 @@ public class Main {
         WordStatisticsCalculator wordStatisticsCalculator = new WordStatisticsCalculator();
         List<WordStatisticsRecord> statistics = wordStatisticsCalculator.calculate(wordCounterResult);
 
-        WordStatisticsWriter statisticsWriter = new WordStatisticsWriter();
-        statisticsWriter.write(outputPath, statistics);
+        WordStatisticsWriter wordStatisticsWriter = new WordStatisticsWriter();
+        wordStatisticsWriter.write(outputPath, statistics);
     }
 }

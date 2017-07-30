@@ -8,12 +8,12 @@ import java.util.HashMap;
  */
 public class WordCounter {
     public WordCounterResult count(String inputPath){
-        WordCounterResult result = new WordCounterResult(0, new HashMap<>());
+        WordCounterResult wordCounterResult = new WordCounterResult(0, new HashMap<>());
 
         try (InputStreamReader reader =
                      new InputStreamReader(new BufferedInputStream(new FileInputStream(inputPath))))
                      {
-                       StringBuilder buffer = new StringBuilder();
+                       StringBuilder sb = new StringBuilder();
                        while(true){
                            int value = reader.read();
                            if (value == -1){
@@ -21,29 +21,29 @@ public class WordCounter {
                            }
                            char c = (char)value;
                            if (Character.isLetterOrDigit(c)){
-                               buffer.append(c);
+                               sb.append(c);
                            } else {
-                               addWord(buffer, result);
+                               addWord(sb, wordCounterResult);
                            }
                        }
-                       addWord(buffer, result);
+                       addWord(sb, wordCounterResult);
                      } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return result;
+        return wordCounterResult;
     }
-    private void addWord(StringBuilder buffer, WordCounterResult result){
-        if (buffer.length() == 0){
+    private void addWord(StringBuilder sb, WordCounterResult wordCounterResult){
+        if (sb.length() == 0){
             return;
         }
-        String word = buffer.toString().toLowerCase();
-        result.setTotalCount(result.getTotalCount() + 1);
-        Integer wordCount = result.getWordsCount().get(word);
+        String word = sb.toString().toLowerCase();
+        wordCounterResult.setTotalCount(wordCounterResult.getTotalCount() + 1);
+        Integer wordCount = wordCounterResult.getWordsCount().get(word);
         if (wordCount == null){
-            result.getWordsCount().put(word, 1);
+            wordCounterResult.getWordsCount().put(word, 1);
         } else {
-            result.getWordsCount().put(word, wordCount + 1);
+            wordCounterResult.getWordsCount().put(word, wordCount + 1);
         }
-        buffer.setLength(0);
+        sb.setLength(0);
     }
 }

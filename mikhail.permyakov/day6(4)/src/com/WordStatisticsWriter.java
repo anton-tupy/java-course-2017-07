@@ -6,9 +6,6 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.List;
 
-/**
- * Created by lab on 29.07.2017.
- */
 public class WordStatisticsWriter {
     public void write(String outputPath, List<WordStatisticsRecord> statistics){
         try (OutputStreamWriter writer
