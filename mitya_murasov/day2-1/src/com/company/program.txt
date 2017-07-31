@@ -1,0 +1,3 @@
+push 129
+log
+print
