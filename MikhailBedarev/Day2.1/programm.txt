@@ -1,0 +1,8 @@
+define a 2
+define b 4
+push a
+push b
+print
+exp
+log
+print
