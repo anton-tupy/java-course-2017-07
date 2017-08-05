@@ -19,7 +19,15 @@ public class DirectoryReaderWithParent implements DirectoryListingReader{
         List<DirectoryItem> items = listingReader.read();
 
         Path currentPath = Paths.get(currentDir).toAbsolutePath();
-        String parentStr = currentPath.getParent().getParent().toString();
+        Path parent = currentPath.getParent();
+        if(parent == null){
+            return items;
+        }
+        parent = parent.getParent();
+        if (parent == null){
+            return items;
+        }
+        String parentStr = parent.toString();
         DirectoryItem parentItem = DirectoryItem.directory("..", parentStr);
 
         ArrayList<DirectoryItem> result = new ArrayList<>();
