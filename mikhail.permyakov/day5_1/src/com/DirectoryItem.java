@@ -13,7 +13,7 @@ public class DirectoryItem {
     private Long size;
     private OffsetDateTime changedAt;
 
-    public static DirectoryItem file(String name, String path, long size, OffsetDateTime changedAt){
+    public static DirectoryItem file(String name, String path, Long size, OffsetDateTime changedAt){
         return new DirectoryItem(name, path, DirectoryItemType.FILE, size, changedAt);
     }
 
