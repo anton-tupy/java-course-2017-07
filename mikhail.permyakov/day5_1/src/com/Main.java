@@ -10,7 +10,10 @@ public class Main {
     public static void main(String[] args) throws DirectoryPrinterException, IOException {
         String dirPath = args[0];
         String htmlFile = args[1];
-        DirectoryReader directoryReader = new DirectoryReader(args[0]);
+        DirectoryListingReader directoryReader =
+                new DirectoryReaderWithParent(
+                        dirPath, new DirectorySortingReader(
+                                new DirectoryReader(dirPath)));
         List<DirectoryItem> items = directoryReader.read();
         DirectoryHtmlPrinter htmlPrinter = new DirectoryHtmlPrinter();
 

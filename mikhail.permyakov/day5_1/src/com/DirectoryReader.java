@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 
 import static java.nio.file.Files.list;
 
-public class DirectoryReader {
+public class DirectoryReader implements DirectoryListingReader{
     private String dirPath;
 
     public DirectoryReader(String dirPath) {

@@ -8,14 +8,14 @@ public class DirectoryHtmlPrinter {
         output.println("<html>");
 
         output.println("<head>");
-        output.format("<title>Листинг директории%s</title>", dirname);
+        output.format("<title>Листинг директории %s</title>", dirname);
         output.println("<meta charset = 'utf-8'>");
         output.println("</head>");
 
         output.println("<body>");
         output.println("<table>");
 
-        output.println("<tr");
+        output.println("<tr>");
         output.println("<th>Название</th>");
         output.println("<th>Время модификации</th>");
         output.println("<th>Размер</th>");
