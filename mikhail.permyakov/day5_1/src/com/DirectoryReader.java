@@ -10,6 +10,7 @@ import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import static java.nio.file.Files.list;
@@ -34,17 +35,31 @@ public class DirectoryReader {
                                directoryItem = DirectoryItem.directory(itemPath.toString(),
                                                itemPath.toAbsolutePath().toString());
                            }else {
-                               try{
-                               long size = Files.size(itemPath);
-                               FileTime lastModifiedTime = Files.getLastModifiedTime(itemPath);
-                               Instant changedAt = Instant.ofEpochMilli(lastModifiedTime.toMillis());
+                               Long size = tryGet(()-> Files.size(itemPath));
+
+//                               try {
+//                                   size = Files.size(itemPath);
+//                               } catch (IOException e){
+//                                   e.printStackTrace(System.err);
+//                                   size = null;
+//                               }
                                OffsetDateTime createdAtDateTime =
-                                       OffsetDateTime.ofInstant(changedAt, ZoneId.systemDefault());
-                               directoryItem =
+                               tryGet(()->{
+                                   FileTime lastModifiedTime = Files.getLastModifiedTime(itemPath);
+                                   Instant changedAt = Instant.ofEpochMilli(lastModifiedTime.toMillis());
+                                   return OffsetDateTime.ofInstant(changedAt, ZoneId.systemDefault());
+                               });
+
+
+
+//                               try {
+//                                   lastModifiedTime = Files.getLastModifiedTime(itemPath);
+//                               } catch (IOException e){
+//                                   e.printStackTrace(System.err);
+//                                   lastModifiedTime = null;
+//                               }
+                                directoryItem =
                                        DirectoryItem.file(name, fullPath, size, createdAtDateTime);
-                               }catch (IOException e){
-                                   throw new RuntimeException(e);
-                               }
 
                            }
                            result.add(directoryItem);
@@ -54,6 +69,19 @@ public class DirectoryReader {
 
                } catch (IOException e) {
             throw new DirectoryPrinterException();
+        }
+    }
+
+    public interface Task<T>{
+        T get() throws IOException;
+    }
+    private <T> T tryGet(Task<T> task){
+        try {
+            return task.get();
+        }catch(IOException e){
+            e.printStackTrace(System.err);
+            return null;
+
         }
     }
 }
