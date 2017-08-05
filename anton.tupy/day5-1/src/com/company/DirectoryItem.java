@@ -27,7 +27,7 @@ public class DirectoryItem {
     }
 
     public static DirectoryItem file(
-            String name, String path, long size, OffsetDateTime changedAt) {
+            String name, String path, Long size, OffsetDateTime changedAt) {
         return new DirectoryItem(name, path, DirectoryItemType.FILE, size, changedAt);
     }
 
@@ -52,7 +52,7 @@ public class DirectoryItem {
         return size;
     }
 
-    public OffsetDateTime ChangedAt() {
+    public OffsetDateTime getChangedAt() {
         return changedAt;
     }
 

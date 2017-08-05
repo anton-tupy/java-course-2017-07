@@ -10,12 +10,13 @@ import java.time.OffsetDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 /**
  * Created by IT-Academy on 03.08.2017.
  */
-public class DirectoryReader {
+public class DirectoryReader implements DirectoryListingReader {
     private String dirPath;
 
     public DirectoryReader(String dirPath) {
@@ -36,19 +37,18 @@ public class DirectoryReader {
                         directoryItem = DirectoryItem.directory(name, fullPath);
                     }
                     else {
-                        try {
-                            long size = Files.size(itemPath);
+                        Long size = tryGet(() -> Files.size(itemPath));
+
+                        OffsetDateTime changedAtDateTime = tryGet(() -> {
                             FileTime lastModifiedTime = Files.getLastModifiedTime(itemPath);
                             Instant changedAt = Instant.ofEpochMilli(lastModifiedTime.toMillis());
-                            OffsetDateTime changedAtDateTime =
-                                    OffsetDateTime.ofInstant(changedAt, ZoneId.systemDefault());
-                            directoryItem =
-                                    DirectoryItem.file(
-                                            name, fullPath, size, changedAtDateTime);
-                        }
-                        catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
+                            return OffsetDateTime.ofInstant(changedAt, ZoneId.systemDefault());
+                        });
+
+                        directoryItem =
+                                DirectoryItem.file(
+                                        name, fullPath, size, changedAtDateTime);
+
                     }
                     result.add(directoryItem);
                 });
@@ -57,6 +57,19 @@ public class DirectoryReader {
         } catch (IOException e) {
             throw new DirectoryPrinterException(
                     "Unable to read directory", e);
+        }
+    }
+
+    public interface Task<T> {
+        T get() throws IOException;
+    }
+
+    private <T> T tryGet(Task<T> task) {
+        try {
+            return task.get();
+        } catch (IOException e) {
+            e.printStackTrace(System.err);
+            return null;
         }
     }
 }
