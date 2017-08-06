@@ -3,8 +3,8 @@ package com;
 import java.io.PrintStream;
 import java.util.List;
 
-public class DirectoryHtmlPrinter {
-    public void print(String dirname, List<DirectoryItem> directoryItems, PrintStream output){
+class DirectoryHtmlPrinter {
+    void print(String dirname, List<DirectoryItem> directoryItems, PrintStream output){
         output.println("<html>");
 
         output.println("<head>");

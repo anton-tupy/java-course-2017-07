@@ -1,8 +1,5 @@
 package com;
 
-/**
- * Created by lab on 03.08.2017.
- */
 public class DirectoryPrinterException extends Exception{
     public DirectoryPrinterException() {
     }
