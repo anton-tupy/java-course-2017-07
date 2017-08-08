@@ -30,4 +30,8 @@ public class CalculatorContext {
     public float getValue(String name) {
         return values.get(name);
     }
+
+    public boolean isValue(String name) {
+        return values.get(name) != null;
+    }
 }

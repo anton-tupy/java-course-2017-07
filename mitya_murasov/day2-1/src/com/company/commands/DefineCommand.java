@@ -2,6 +2,8 @@ package com.company.commands;
 
 import com.company.CalculatorContext;
 import com.company.Command;
+import com.company.annotations.In;
+import com.company.annotations.InType;
 
 import java.util.List;
 
@@ -10,8 +12,10 @@ import java.util.List;
  */
 public class DefineCommand implements Command
 {
+    @In(type = InType.CONTEXT)
+    private CalculatorContext context;
     @Override
-    public void execute(List<String> arguments, CalculatorContext context)
+    public void execute(List<String> arguments)
     {
         if (arguments.size() < 2)
         {

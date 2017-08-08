@@ -9,25 +9,30 @@ public class Calculator {
 
     public void run(String path) {
         LineParser lineParser = new LineParser();
-        CommandFactory commandFactory = new CommandFactory();
-        BufferedReader reader = getBufferedReader(path);
         CalculatorContext calculatorContext = new CalculatorContext();
-        String line;
-        while(true) {
-            try {
-                line = reader.readLine();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        CalculatorStack calculatorStack = new CalculatorStack();
+        ContextInjector contextInjector = new ContextInjector(calculatorContext, calculatorStack);
+        CommandFactory commandFactory = new CommandFactory(contextInjector);
+        try (BufferedReader reader = getBufferedReader(path)) {
+            String line;
+            while (true) {
+                try {
+                    line = reader.readLine();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                if (line == null) {
+                    break;
+                }
+                ParseResult parseResult = lineParser.parse(line);
+                if (parseResult == null) {
+                    continue;
+                }
+                Command command = commandFactory.createCommand(parseResult.getCommandName());
+                command.execute(parseResult.getArguments());
             }
-            if (line == null) {
-                break;
-            }
-            ParseResult parseResult = lineParser.parse(line);
-            if (parseResult == null) {
-                continue;
-            }
-            Command command = commandFactory.createCommand(parseResult.getCommandName());
-            command.execute(parseResult.getArguments(), calculatorContext);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

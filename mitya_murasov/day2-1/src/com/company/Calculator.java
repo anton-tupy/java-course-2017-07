@@ -11,9 +11,12 @@ public class Calculator
     public void run(String path)
     {
         LineParser lineParser = new LineParser();
-        CommandFactory commandFactory = new CommandFactory();
-        BufferedReader reader = getBufferedReader(path);
         CalculatorContext calculatorContext = new CalculatorContext();
+        CalculatorStack calculatorStack = new CalculatorStack();
+        ContextInjector contextInjector = new ContextInjector(calculatorContext,calculatorStack);
+        CommandFactory commandFactory = new CommandFactory(contextInjector);
+        BufferedReader reader = getBufferedReader(path);
+
         String line;
         while (true)
         {
@@ -37,7 +40,7 @@ public class Calculator
             }
 
             Command command = commandFactory.createCommand(parseResult.getCommandName());
-            command.execute(parseResult.getArguments(),calculatorContext);
+            command.execute(parseResult.getArguments());
         }
     }
 

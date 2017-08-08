@@ -3,18 +3,16 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        Car car = new Car();
-        car.move();
 
-        Vehicle vehicle = new Car();
-        vehicle.move();
-        vehicle = new Ship();
-        vehicle.move();
+        Husband husband = new Husband("Vova", 29);
+        husband.person();
 
-        Movable movable = new Ship();
-        movable.move();
+        Wife wife = new Wife("Lora",31);
+        wife.person();
 
-        car.moveTwice();
+        Son son = new Son("Leva",6);
+        son.person();
+
 
     }
 }

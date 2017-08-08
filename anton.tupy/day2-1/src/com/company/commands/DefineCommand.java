@@ -2,6 +2,8 @@ package com.company.commands;
 
 import com.company.CalculatorContext;
 import com.company.Command;
+import com.company.annotations.In;
+import com.company.annotations.InType;
 
 import java.util.List;
 
@@ -9,8 +11,12 @@ import java.util.List;
  * Created by It-Academy-5 on 22.07.2017.
  */
 public class DefineCommand implements Command {
+
+    @In(type = InType.CONTEXT)
+    private CalculatorContext context;
+
     @Override
-    public void execute(List<String> arguments, CalculatorContext context) {
+    public void execute(List<String> arguments) {
         if (arguments.size() < 2) {
             throw new RuntimeException("DefineCommand: too few arguments");
         }
