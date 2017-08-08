@@ -3,11 +3,12 @@ package com.company.commands;
 import com.company.CalculatorContext;
 import com.company.Command;
 import com.company.annotations.In;
+import com.company.annotations.InType;
 
 import java.util.List;
 
 public class DefineCommand implements Command {
-    @In
+    @In(type = InType.CONTEXT)
     private CalculatorContext context;
 
     @Override

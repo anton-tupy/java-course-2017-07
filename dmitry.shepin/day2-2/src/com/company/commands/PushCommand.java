@@ -1,15 +1,19 @@
 package com.company.commands;
 
 import com.company.CalculatorContext;
+import com.company.CalculatorStack;
 import com.company.Command;
 import com.company.annotations.In;
+import com.company.annotations.InType;
 
 import java.util.List;
 
 public class PushCommand implements Command {
 
-    @In
+    @In(type = InType.STACK)
+    private CalculatorStack stack;
 
+    @In(type = InType.CONTEXT)
     private CalculatorContext context;
 
     @Override
@@ -28,6 +32,6 @@ public class PushCommand implements Command {
             value = Float.parseFloat(arg);
         }
 
-        context.push(value);
+        stack.push(value);
     }
 }

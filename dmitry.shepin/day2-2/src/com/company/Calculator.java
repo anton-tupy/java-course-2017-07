@@ -8,31 +8,40 @@ import java.io.*;
 public class Calculator {
     public void run(String path) throws ClassNotFoundException {
         LineParser lineParser = new LineParser();
+
         CalculatorContext calculatorContext = new CalculatorContext();
-        ContextInjector contextInjector = new ContextInjector(calculatorContext);
+
+        CalculatorStack calculatorStack = new CalculatorStack();
+
+        ContextInjector contextInjector = new ContextInjector(calculatorContext, calculatorStack);
+
         CommandFactory commandFactory = new CommandFactory(contextInjector);
-        BufferedReader reader = getBufferedReader(path);
 
-        String line;
-        while (true) {
-            try {
-                line = reader.readLine();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            if (line == null) {
-                break;
-            }
+        try (BufferedReader reader = getBufferedReader(path);) {
+            String line;
+            while (true) {
+                try {
+                    line = reader.readLine();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                if (line == null) {
+                    break;
+                }
 
-            ParseResult parseResult = lineParser.parse(line);
+                ParseResult parseResult = lineParser.parse(line);
 
-            if (parseResult == null) {
-                continue;
+                if (parseResult == null) {
+                    continue;
+                }
+                Command command = commandFactory.createCommand(parseResult.getCommandName());
+                command.execute(parseResult.getArguments());
             }
-            Command command = commandFactory.createCommand(parseResult.getCommandName());
-            command.execute(parseResult.getArguments());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
+
 
     private BufferedReader getBufferedReader(String path) {
         BufferedReader reader = new BufferedReader(getReader(path));

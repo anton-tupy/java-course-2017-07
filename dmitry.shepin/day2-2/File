@@ -1,8 +1,2 @@
-define a 2
-push a
-log
-print
-exp
-print
-exp
+push 2
 print

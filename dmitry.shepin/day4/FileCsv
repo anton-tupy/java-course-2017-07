@@ -1,0 +1,21 @@
+toString тоже не содержит ничего необычного, кроме разве того, что hashCode() преобразуется в шестнадцатеричную строку. И если бы apangin не написал, что нынче как только нельзя посчитать hashCode, я бы подумал, что раньше Java программисты могли найти свой объект по hashCode, т.к. он был не чем иным как ссылкой. Те 32 битные времена для многих прошли, и теперь даже не знаю, есть ли смысл в toString() выводить hashCode.
+
+public String toString() {
+    return getClass().getName() + "@" + Integer.toHexString(hashCode());
+}
+
+Кроме того, что wait относится к примитивам обеспечивающим многопоточность, хочется отметить бесполезность параметра nanos.
+
+В некоторых случаях он просто добавляет одну милисекунду. Интересно, это закладка на будущее или уже есть системы в которых у wait(long timeout, int nanos) другая реализация.
+
+public final void wait(long timeout, int nanos) throws InterruptedException {
+    if (timeout < 0) {
+        throw new IllegalArgumentException("timeout value is negative");
+    }
+
+    if (nanos < 0 || nanos > 999999) {
+        throw new IllegalArgumentException(
+                            "nanosecond timeout value out of range");
+    }
+
+    if (nanos >= 500000 || (nanos != 0 && timeout == 0)) {
