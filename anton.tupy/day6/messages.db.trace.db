@@ -1,0 +1,172 @@
+2017-08-10 20:48:23 database: flush
+org.h2.message.DbException: Внутренняя ошибка: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/IT-Academy/java-course-2017-07/anton.tupy/day6/messages.db.mv.db [1.4.196/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/IT-Academy/java-course-2017-07/anton.tupy/day6/messages.db.mv.db [1.4.196/7]" [50000-196]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:95)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:378)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:361)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2930)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:155)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:100)
+	at org.h2.engine.Database.getPageStore(Database.java:2476)
+	at org.h2.engine.Database.open(Database.java:697)
+	at org.h2.engine.Database.openDatabase(Database.java:276)
+	at org.h2.engine.Database.<init>(Database.java:270)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:354)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:116)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:100)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:270)
+	at com.javacource.task6.GuestBookController.connect(GuestBookController.java:28)
+	at com.javacource.task6.GuestBookController.addMessage(GuestBookController.java:12)
+	at com.javacource.task6.Main.main(Main.java:15)
+Caused by: org.h2.jdbc.JdbcSQLException: Внутренняя ошибка: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/IT-Academy/java-course-2017-07/anton.tupy/day6/messages.db.mv.db [1.4.196/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/IT-Academy/java-course-2017-07/anton.tupy/day6/messages.db.mv.db [1.4.196/7]" [50000-196]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 26 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/IT-Academy/java-course-2017-07/anton.tupy/day6/messages.db.mv.db [1.4.196/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:765)
+	at org.h2.mvstore.FileStore.open(FileStore.java:173)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:347)
+	... 21 more
+2017-08-10 20:53:24 database: wrong user or password; user: ""
+org.h2.message.DbException: Неверное имя пользователя или пароль
+Wrong user name or password [28000-196]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.engine.Engine.openSession(Engine.java:104)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:354)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:116)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:100)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:270)
+	at com.javacource.task6.GuestBookController.connect(GuestBookController.java:28)
+	at com.javacource.task6.GuestBookController.addMessage(GuestBookController.java:12)
+	at com.javacource.task6.Main.main(Main.java:15)
+Caused by: org.h2.jdbc.JdbcSQLException: Неверное имя пользователя или пароль
+Wrong user name or password [28000-196]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 17 more
+2017-08-10 20:53:51 database: wrong user or password; user: ""
+org.h2.message.DbException: Неверное имя пользователя или пароль
+Wrong user name or password [28000-196]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.engine.Engine.openSession(Engine.java:104)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:354)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:116)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:100)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at com.javacource.task6.GuestBookController.connect(GuestBookController.java:28)
+	at com.javacource.task6.GuestBookController.addMessage(GuestBookController.java:12)
+	at com.javacource.task6.Main.main(Main.java:15)
+Caused by: org.h2.jdbc.JdbcSQLException: Неверное имя пользователя или пароль
+Wrong user name or password [28000-196]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 17 more
+2017-08-10 20:56:35 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Синтаксическая ошибка в выражении SQL "CREATE TABLEPOSTS[*]  POSTS(ID INT AUTO_INCREMENT PRIMARY KEY,  POSTDATE TIMESTAMP, POSTMESSAGE VARCHAR(255)) "; ожидалось "OR, FORCE, VIEW, ALIAS, SEQUENCE, USER, TRIGGER, ROLE, SCHEMA, CONSTANT, DOMAIN, TYPE, DATATYPE, AGGREGATE, LINKED, MEMORY, CACHED, LOCAL, GLOBAL, TEMP, TEMPORARY, TABLE, PRIMARY, UNIQUE, HASH, SPATIAL, INDEX"
+Syntax error in SQL statement "CREATE TABLEPOSTS[*]  POSTS(ID INT AUTO_INCREMENT PRIMARY KEY,  POSTDATE TIMESTAMP, POSTMESSAGE VARCHAR(255)) "; expected "OR, FORCE, VIEW, ALIAS, SEQUENCE, USER, TRIGGER, ROLE, SCHEMA, CONSTANT, DOMAIN, TYPE, DATATYPE, AGGREGATE, LINKED, MEMORY, CACHED, LOCAL, GLOBAL, TEMP, TEMPORARY, TABLE, PRIMARY, UNIQUE, HASH, SPATIAL, INDEX"; SQL statement:
+CREATE TABLEPOSTS  posts(ID INT auto_increment PRIMARY KEY,  postDate TIMESTAMP, postMessage VARCHAR(255)) [42001-195]
+2017-08-10 20:56:35 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Синтаксическая ошибка в выражении SQL "POSTS[*] POSTS"; ожидалось "PREPARE, {"
+Syntax error in SQL statement "POSTS[*] POSTS"; expected "PREPARE, {"; SQL statement:
+POSTS POSTS [42001-195]
+2017-08-10 20:56:45 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Синтаксическая ошибка в выражении SQL "CREATE TABLE POSTS  POSTS[*](ID INT AUTO_INCREMENT PRIMARY KEY,  POSTDATE TIMESTAMP, POSTMESSAGE VARCHAR(255)) "
+Syntax error in SQL statement "CREATE TABLE POSTS  POSTS[*](ID INT AUTO_INCREMENT PRIMARY KEY,  POSTDATE TIMESTAMP, POSTMESSAGE VARCHAR(255)) "; SQL statement:
+CREATE TABLE POSTS  posts(ID INT auto_increment PRIMARY KEY,  postDate TIMESTAMP, postMessage VARCHAR(255)) [42000-195]
+2017-08-10 20:56:45 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Синтаксическая ошибка в выражении SQL "POSTS[*] POSTS"; ожидалось "PREPARE, {"
+Syntax error in SQL statement "POSTS[*] POSTS"; expected "PREPARE, {"; SQL statement:
+POSTS POSTS [42001-195]
+2017-08-10 20:57:22 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Синтаксическая ошибка в выражении SQL "CREATE TABLE POSTS  POSTS[*](ID INT AUTO_INCREMENT PRIMARY KEY,  POSTDATE TIMESTAMP, POSTMESSAGE VARCHAR(255)) "
+Syntax error in SQL statement "CREATE TABLE POSTS  POSTS[*](ID INT AUTO_INCREMENT PRIMARY KEY,  POSTDATE TIMESTAMP, POSTMESSAGE VARCHAR(255)) "; SQL statement:
+CREATE TABLE POSTS  posts(ID INT auto_increment PRIMARY KEY,  postDate TIMESTAMP, postMessage VARCHAR(255)) [42000-195]
+2017-08-10 20:57:22 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Синтаксическая ошибка в выражении SQL "POSTS[*] POSTS"; ожидалось "PREPARE, {"
+Syntax error in SQL statement "POSTS[*] POSTS"; expected "PREPARE, {"; SQL statement:
+POSTS POSTS [42001-195]
+2017-08-10 20:58:20 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Синтаксическая ошибка в выражении SQL "CREATE TABLE POSTS  POSTS[*](ID INT AUTO_INCREMENT,  POSTDATE TIMESTAMP, POSTMESSAGE VARCHAR(255)) "
+Syntax error in SQL statement "CREATE TABLE POSTS  POSTS[*](ID INT AUTO_INCREMENT,  POSTDATE TIMESTAMP, POSTMESSAGE VARCHAR(255)) "; SQL statement:
+CREATE TABLE POSTS  posts(ID INT AUTO_INCREMENT,  postDate TIMESTAMP, postMessage VARCHAR(255)) [42000-195]
+2017-08-10 20:58:20 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Синтаксическая ошибка в выражении SQL "POSTS[*] POSTS"; ожидалось "PREPARE, {"
+Syntax error in SQL statement "POSTS[*] POSTS"; expected "PREPARE, {"; SQL statement:
+POSTS POSTS [42001-195]
+2017-08-10 20:58:39 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Синтаксическая ошибка в выражении SQL "POSTS[*] POSTS"; ожидалось "PREPARE, {"
+Syntax error in SQL statement "POSTS[*] POSTS"; expected "PREPARE, {"; SQL statement:
+POSTS POSTS [42001-195]
+2017-08-10 20:58:47 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "POSTS" уже существует
+Table "POSTS" already exists; SQL statement:
+CREATE TABLE posts(ID INT AUTO_INCREMENT PRIMARY KEY,  postDate TIMESTAMP, postMessage VARCHAR(255)) [42101-195]
+2017-08-10 20:58:59 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Синтаксическая ошибка в выражении SQL "CREATE TABLE POSTS(ID INT AUTO_INCREMENT PRIMARY KEY,  POSTDATE TIMESTAMP, POSTMESSAGE VARCHAR(255) [*]"; ожидалось "FOR, UNSIGNED, INVISIBLE, VISIBLE, NOT, NULL, AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE POSTS(ID INT AUTO_INCREMENT PRIMARY KEY,  POSTDATE TIMESTAMP, POSTMESSAGE VARCHAR(255) [*]"; expected "FOR, UNSIGNED, INVISIBLE, VISIBLE, NOT, NULL, AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE posts(ID INT AUTO_INCREMENT PRIMARY KEY,  postDate TIMESTAMP, postMessage VARCHAR(255) [42001-195]
+2017-08-10 20:59:17 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Синтаксическая ошибка в выражении SQL "CREATE TABLE POSTS(ID INT AUTO_INCREMENT PRIMARY KEY,  POSTDATE TIMESTAMP, POSTMESSAGE VARCHAR(255) [*]"; ожидалось "FOR, UNSIGNED, INVISIBLE, VISIBLE, NOT, NULL, AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE POSTS(ID INT AUTO_INCREMENT PRIMARY KEY,  POSTDATE TIMESTAMP, POSTMESSAGE VARCHAR(255) [*]"; expected "FOR, UNSIGNED, INVISIBLE, VISIBLE, NOT, NULL, AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE posts(ID INT AUTO_INCREMENT PRIMARY KEY,  postDate TIMESTAMP, postMessage VARCHAR(255) [42001-195]
+2017-08-10 21:21:28 database: flush
+org.h2.message.DbException: Внутренняя ошибка: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/IT-Academy/java-course-2017-07/anton.tupy/day6/messages.db.mv.db [1.4.196/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/IT-Academy/java-course-2017-07/anton.tupy/day6/messages.db.mv.db [1.4.196/7]" [50000-196]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:95)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:378)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:361)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2930)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:155)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:100)
+	at org.h2.engine.Database.getPageStore(Database.java:2476)
+	at org.h2.engine.Database.open(Database.java:697)
+	at org.h2.engine.Database.openDatabase(Database.java:276)
+	at org.h2.engine.Database.<init>(Database.java:270)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:354)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:116)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:100)
+	at org.h2.Driver.connect(Driver.java:69)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at com.javacource.task6.GuestBookController.connect(GuestBookController.java:43)
+	at com.javacource.task6.GuestBookController.allMessages(GuestBookController.java:24)
+	at com.javacource.task6.Main.main(Main.java:19)
+Caused by: org.h2.jdbc.JdbcSQLException: Внутренняя ошибка: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/IT-Academy/java-course-2017-07/anton.tupy/day6/messages.db.mv.db [1.4.196/7]"
+General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/IT-Academy/java-course-2017-07/anton.tupy/day6/messages.db.mv.db [1.4.196/7]" [50000-196]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 26 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/IT-Academy/java-course-2017-07/anton.tupy/day6/messages.db.mv.db [1.4.196/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:765)
+	at org.h2.mvstore.FileStore.open(FileStore.java:173)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:347)
+	... 21 more
