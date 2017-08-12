@@ -1,5 +1,6 @@
 package com.javacource.task6;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.*;
 
@@ -7,6 +8,12 @@ import java.util.*;
  * Created by IT-Academy on 10.08.2017.
  */
 public class GuestBookController {
+
+    private DataSource dataSource;
+
+    public GuestBookController(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     public void addMessage(String message) throws SQLException {
         try (Connection connection = connect()) {
@@ -40,6 +47,6 @@ public class GuestBookController {
     }
 
     private Connection connect() throws SQLException {
-        return DriverManager.getConnection("jdbc:h2:./messages.db", "sa", "");
+        return dataSource.getConnection();
     }
 }

@@ -9,7 +9,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws SQLException {
         String command = args[0];
-        GuestBookController controller = new GuestBookController();
+        GuestBookController controller = new GuestBookController(null);
         switch (command) {
             case "add":
                 String message = args[1];
