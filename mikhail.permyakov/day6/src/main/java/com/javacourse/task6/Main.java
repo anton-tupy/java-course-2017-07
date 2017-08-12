@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) throws SQLException {
 //        System.out.println("HW");
         String command = args[0];
-        GuestBookController controller = new GuestBookController();
+        GuestBookController controller = new GuestBookController(null);
         switch(command){
             case "add":
                 String message = args[1];

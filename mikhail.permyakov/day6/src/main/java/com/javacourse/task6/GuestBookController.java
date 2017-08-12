@@ -1,10 +1,17 @@
 package com.javacourse.task6;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GuestBookController {
+
+    public GuestBookController(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    private DataSource dataSource;
 
     public void addMessage(String message) throws SQLException{
 
@@ -38,6 +45,7 @@ public class GuestBookController {
     }
 
     private Connection connect() throws SQLException{
-        return DriverManager.getConnection("jdbc:h2:./messages.db","sa","");
+        return dataSource.getConnection();
+//        return DriverManager.getConnection("jdbc:h2:./messages.db","sa","");
     }
 }

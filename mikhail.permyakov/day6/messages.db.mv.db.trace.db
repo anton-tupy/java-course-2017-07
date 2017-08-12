@@ -1,0 +1,9 @@
+2017-08-12 16:34:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "POSTS" not found; SQL statement:
+SELECT ID, POSTMESSAGE, POSTDATE FROM POSTS [42102-196]
+2017-08-12 16:35:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "POSTS" not found; SQL statement:
+SELECT ID, POSTMESSAGE, POSTDATE FROM POSTS [42102-196]
+2017-08-12 16:35:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "POSTS" not found; SQL statement:
+SELECT ID, POSTMESSAGE, POSTDATE FROM POSTS [42102-196]
